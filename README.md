@@ -1,6 +1,6 @@
 ## Clockjs
 
-A simple javascript to display an analog clock.
+A simple analog clock written in vanilla-js.
 
 ![Alt Text](./sample.gif)
 
