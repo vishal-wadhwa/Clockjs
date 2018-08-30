@@ -2,6 +2,8 @@
 
 A simple javascript to display an analog clock.
 
+![Alt Text](./sample.gif)
+
 ### Install instructions:
 1. Clone this repo.
 2. In the project folder:
