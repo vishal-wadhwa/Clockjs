@@ -1,3 +1,9 @@
+$primary: black;
+$primary-2: white;
+$secondary: gray;
+$accent: red;
+$clock-border: 10px;
+
 html {
   box-sizing: border-box;
 }
@@ -7,19 +13,30 @@ html {
 }
 
 .clock {
+  background-color: mix($primary-2, $secondary, 95%);
   border-radius: 50%;
   width: 100%;
   height: 100%;
   display: flex;
   position: relative;
-  border: 5px double black;
-
+  box-shadow: inset 0 0 20px $secondary;
+  border: $clock-border groove $primary;
+  
   &__dial-hour {
+    color: mix($primary-2, $primary, 30%);
+    text-shadow: 1px 1px 4px;
     position: absolute;
+
+    &--main {
+      color: $primary;
+      font-size: 1.6em;
+      font-weight: 500;
+    }
   }
 
   &__hand-pivot {
-    border: 4px solid black;
+    box-shadow: 0 0 2px 2px $accent;
+    border: 5px solid $primary-2;
     border-radius: 50%;
     height: 0px;
     width: 0px;
@@ -27,28 +44,35 @@ html {
   }
 
   &__hours-hand {
+    box-shadow: 1px 1px 1px 1px $secondary;
+    border-radius: 40% 40% 20% 20%;
     position: absolute;
-    background-color: black;
-    width: 4px;
+    border: 2px solid $primary;
+    background-color: $primary-2;
+    width: 8px;
   }
 
   &__minutes-hand {
+    box-shadow: 1px 1px 1px 1px $secondary;
     position: absolute;
-    background-color: black;
-    width: 2px;
+    border-radius: 40% 40% 20% 20%;
+    background-color: $primary-2;
+    border: 1px solid $primary;
+    width: 4px;
   }
 
   &__seconds-hand {
+    box-shadow: 1px 1px 1px 0px $accent;
     position: absolute;
-    background-color: black;
+    border-radius: 30%;
+    background-color: $accent;
     width: 1px;
   }
 }
 
 #container {
   padding: 10px;
-  height: 400px;
-  font-size: 50px;
-  line-height: 50px;
-  width: 400px;
+  height: 500px;
+  font-size: 30px;
+  width: 500px;
 }

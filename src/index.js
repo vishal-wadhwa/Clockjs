@@ -35,9 +35,9 @@ clock.style.height = clock.style.width = minv
 
 const {height, width} = getDims(clock)
 let dialHours = document.getElementsByClassName('clock__dial-hour')
-let offsetFix = dialHours[0].offsetHeight / 10
+let offsetFix = dialHours[11].offsetHeight / 10
 let refx = 0
-let refy = -height / 2 + dialHours[0].offsetHeight / 2
+let refy = -height / 2 + dialHours[11].offsetHeight / 2
 const origin = {x: 0, y: 0}
 
 for (let i = 1; i <= 12; ++i) {
@@ -61,21 +61,21 @@ const secondsHand = document.getElementById('seconds-hand')
 const offByPivot = 0.05 * height
 
 const hoursHandDims = getDims(hoursHand, false, false)
-hoursHand.style.top = 1.6 * dialHours[0].offsetHeight + 'px'
+hoursHand.style.top = 1.6 * dialHours[11].offsetHeight + 'px'
 hoursHand.style.left = width / 2 - hoursHandDims.width / 2 + 'px'
-hoursHand.style.height = (height / 2 - 1.6 * dialHours[0].offsetHeight + offByPivot) + 'px'
+hoursHand.style.height = (height / 2 - 1.6 * dialHours[11].offsetHeight + offByPivot) + 'px'
 hoursHand.style.transformOrigin = `${hoursHandDims.width / 2}px ${hoursHand.offsetHeight - offByPivot}px`
 
 const minutesHandDims = getDims(minutesHand, false, false)
-minutesHand.style.top = 1.2 * dialHours[0].offsetHeight + 'px'
+minutesHand.style.top = 1.2 * dialHours[11].offsetHeight + 'px'
 minutesHand.style.left = width / 2 - minutesHandDims.width / 2 + 'px'
-minutesHand.style.height = (height / 2 - 1.2 * dialHours[0].offsetHeight + offByPivot) + 'px'
+minutesHand.style.height = (height / 2 - 1.2 * dialHours[11].offsetHeight + offByPivot) + 'px'
 minutesHand.style.transformOrigin = `${minutesHandDims.width / 2}px ${minutesHand.offsetHeight - offByPivot}px`
 
 const secondsHandDims = getDims(minutesHand, false, false)
-secondsHand.style.top = dialHours[0].offsetHeight + 'px'
+secondsHand.style.top = dialHours[11].offsetHeight + 'px'
 secondsHand.style.left = width / 2 - secondsHandDims.width / 2 + 'px'
-secondsHand.style.height = (height / 2 - dialHours[0].offsetHeight + offByPivot) + 'px'
+secondsHand.style.height = (height / 2 - dialHours[11].offsetHeight + offByPivot) + 'px'
 secondsHand.style.transformOrigin = `${secondsHandDims.width / 2}px ${secondsHand.offsetHeight - offByPivot}px`
 
 const dt = new Date()
@@ -95,6 +95,7 @@ const init = () => {
   rotate(secondsHand, secsRotn)
   setTimeout(() => (secondsHand.style.transition = 'transform 1s linear'), 0)
   setInterval(() => {
+    // do %360
     hrsRotn += 360 / (3600 * 12)
     minsRotn += 360 / (60 * 60)
     secsRotn += 360 / 60
