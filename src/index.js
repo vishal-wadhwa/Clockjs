@@ -1,4 +1,4 @@
-import './main.scss'
+import './index.scss'
 
 const getDims = (elm, removeBorder = true, removePadding = true) => {
   const elmStyles = window.getComputedStyle(elm)

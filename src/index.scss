@@ -20,7 +20,7 @@ html {
   display: flex;
   position: relative;
   box-shadow: inset 0 0 20px $secondary;
-  border: $clock-border groove $primary;
+  border: $clock-border solid $primary;
   
   &__dial-hour {
     color: mix($primary-2, $primary, 30%);

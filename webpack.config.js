@@ -7,12 +7,12 @@ const devMode = process.env.NODE_ENV !== 'production'
 module.exports = {
   mode: devMode ? 'development' : 'production',
   entry: {
-    app: './src/index.js'
+    index: './src/index.js'
   },
   devtool: 'inline-source-map',
   devServer: {
+  	progress: true,
     open: true,
-    hot: true,
     noInfo: true,
     contentBase: path.join(__dirname, 'src'),
     watchContentBase: true
@@ -20,17 +20,20 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.(sa|sc|c)ss$/,
         exclude: /node_modules/,
         use: [
           {
-            loader: !devMode ? 'style-loader' : MiniCssExtractPlugin.loader
+            loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+            options: {
+            	sourceMap: true,
+            	singleton: true
+            }
           },
           {
             loader: 'css-loader',
             options: {
               sourceMap: true
-              // modules: true
             }
           },
           {
@@ -54,17 +57,17 @@ module.exports = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: devMode ? '[name].css' : '[name].[hash].css',
-      chunkFilename: devMode ? '[id].css' : '[name].[hash].css'
+      // filename: devMode ? '[name].css' : '[name].[hash].css',
+      // chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
     }),
     new HtmlWebPackPlugin({
       template: path.resolve(__dirname, 'src/index.html'),
       filename: 'index.html'
-    }),
-    new webpack.HotModuleReplacementPlugin()
+    })
   ],
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
+    // publicPath: path.resolve(__dirname, 'dist/')
   }
 }

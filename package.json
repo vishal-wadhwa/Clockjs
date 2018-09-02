@@ -6,7 +6,7 @@
   "author": "Vishal Wadhwa",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_ENV=dev webpack-dev-server",
+    "dev": "NODE_ENV=dev webpack-dev-server --hot",
     "build": "NODE_ENV=production webpack",
     "lint": "eslint src --fix"
   },
